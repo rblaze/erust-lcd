@@ -108,8 +108,8 @@ pub const fn function_set(
     hd44780::function_set(data_width, display_height, font_height) | (instruction_set & 0b0011)
 }
 
-const DEFAULT_CONTRAST: u8 = 40;
-const DEFAULT_V0_AMPLIFIED_RATIO: u8 = 5;
+pub const DEFAULT_CONTRAST: u8 = 40;
+pub const DEFAULT_V0_AMPLIFIED_RATIO: u8 = 5;
 
 /// Initialization sequence from the datasheet, with a minor bugfix.
 /// Insert 2ms delay after each block.
