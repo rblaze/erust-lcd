@@ -35,11 +35,11 @@ pub trait Screen<const WIDTH: usize, const HEIGHT: usize, Error> {
     fn write(&mut self, s: &str) -> Result<(), Error> {
         let mut string_buf = [0; WIDTH];
 
-        // Copy `s` to string buffer, replacing non-ASCII characters with '?'
+        // Copy `s` to string buffer, replacing multibyte characters with '?'
         let len = s
             .chars()
             .take(WIDTH)
-            .map(|c| if c.is_ascii() { c } else { '?' })
+            .map(|c| if (c as u32) < 256 { c } else { '?' })
             .fold(0, |i, c| {
                 string_buf[i] = c as u8;
                 i + 1
